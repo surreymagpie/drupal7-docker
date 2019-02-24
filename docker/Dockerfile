@@ -20,6 +20,7 @@ RUN apt-get -yqq update && \
 	apt-get -yqq install \
 		git \
 		curl \
+		supervisor \
 		wget \
 		zip \
 		unzip && \
@@ -39,8 +40,14 @@ RUN apt-get install -yqq \
 		php7.2-mysql \
 		php7.2-pdo \
 		php-uploadprogress \
-		php7.2-xml
+		php7.2-xml && \
+	apt-get clean && apt-get autoremove && \
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir /run/php
 
 EXPOSE 80 443
 
-CMD ["apachectl", "-D", "FOREGROUND"]
+ADD supervisord.conf /etc/supervisor/supervisord.conf
+
+CMD ["supervisord"]
