@@ -25,3 +25,10 @@ RUN apt-get -yqq update && \
 		unzip && \
     apt-get clean && apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install Apache 2.4
+RUN apt update && apt install -yqq apache2
+
+EXPOSE 80 443
+
+CMD ["apachectl", "-D", "FOREGROUND"]
