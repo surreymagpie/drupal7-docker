@@ -27,7 +27,19 @@ RUN apt-get -yqq update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Apache 2.4
-RUN apt update && apt install -yqq apache2
+RUN apt-get update && apt-get install -yqq apache2
+
+# Install PHP 7.2
+RUN apt-get install -yqq \
+		php7.2 \
+		php7.2-curl \
+		php7.2-fpm \
+		php7.2-gd \
+		php7.2-mbstring \
+		php7.2-mysql \
+		php7.2-pdo \
+		php-uploadprogress \
+		php7.2-xml
 
 EXPOSE 80 443
 
