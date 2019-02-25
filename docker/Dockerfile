@@ -1,5 +1,5 @@
 # Creates an image with all dependencies for drupal 7 website
-# - Apache 2.4
+# - Apache 2.4 with mod_rewrite enabled
 # - PHP 7.2 with GD, curl, mbstring, uploadprogress
 
 FROM ubuntu:18.04
@@ -27,8 +27,13 @@ RUN apt-get -yqq update && \
     apt-get clean && apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Apache 2.4
-RUN apt-get update && apt-get install -yqq apache2
+# Install Apache 2.4 and set the www-data user's UID:GID to 1000 so
+# that they will have same permissions as first user on Unix systems
+RUN apt-get update && \
+	apt-get install -yqq apache2 && \
+	usermod -u 1000 www-data && \
+	groupmod -g 1000 www-data && \
+	a2enmod rewrite
 
 # Install PHP 7.2
 RUN apt-get install -yqq \
@@ -49,5 +54,7 @@ RUN mkdir /run/php
 EXPOSE 80 443
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
+
+ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 CMD ["supervisord"]
