@@ -51,10 +51,22 @@ RUN apt-get install -yqq \
 
 RUN mkdir /run/php
 
+# Install latest compatible Drush version and
+# mySQL client, which drush depends upon
+RUN wget -O /usr/local/bin/drush https://github.com/drush-ops/drush/releases/download/8.1.18/drush.phar && \
+	chmod a+x /usr/local/bin/drush
+
+RUN	apt-get -y update && \
+	apt-get install -yqq mysql-client-5.7&& \
+	apt-get clean && apt-get autoremove && \
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 EXPOSE 80 443
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+WORKDIR /var/www/html
 
 CMD ["supervisord"]
