@@ -1,0 +1,23 @@
+2019-02-27 12:49:37,297 CRIT Supervisor running as root (no user in config file)
+2019-02-27 12:49:37,299 INFO supervisord started with pid 1
+2019-02-27 12:49:38,302 INFO spawned: 'APACHE' with pid 9
+2019-02-27 12:49:38,307 INFO spawned: 'php-fpm' with pid 10
+2019-02-27 12:49:38,415 INFO exited: APACHE (exit status 0; not expected)
+2019-02-27 12:49:38,449 INFO exited: php-fpm (exit status 0; not expected)
+2019-02-27 12:49:39,452 INFO spawned: 'APACHE' with pid 24
+2019-02-27 12:49:39,455 INFO spawned: 'php-fpm' with pid 25
+2019-02-27 12:49:39,560 INFO exited: APACHE (exit status 0; not expected)
+2019-02-27 12:49:39,593 INFO exited: php-fpm (exit status 70; not expected)
+2019-02-27 12:49:39,593 INFO reaped unknown pid 30
+2019-02-27 12:49:41,595 INFO spawned: 'APACHE' with pid 32
+2019-02-27 12:49:41,597 INFO spawned: 'php-fpm' with pid 33
+2019-02-27 12:49:41,638 INFO exited: APACHE (exit status 0; not expected)
+2019-02-27 12:49:41,657 INFO exited: php-fpm (exit status 70; not expected)
+2019-02-27 12:49:41,657 INFO reaped unknown pid 38
+2019-02-27 12:49:44,663 INFO spawned: 'APACHE' with pid 39
+2019-02-27 12:49:44,666 INFO spawned: 'php-fpm' with pid 40
+2019-02-27 12:49:44,767 INFO exited: APACHE (exit status 0; not expected)
+2019-02-27 12:49:44,791 INFO gave up: APACHE entered FATAL state, too many start retries too quickly
+2019-02-27 12:49:44,798 INFO exited: php-fpm (exit status 70; not expected)
+2019-02-27 12:49:44,798 INFO reaped unknown pid 45
+2019-02-27 12:49:45,799 INFO gave up: php-fpm entered FATAL state, too many start retries too quickly
