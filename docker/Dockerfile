@@ -19,6 +19,7 @@ RUN ln -snf /usr/share/zoneinfo/Europe/London /etc/localtime && \
 RUN apt-get -yqq update && \
 	apt-get -yqq install \
 		git \
+		gnupg \
 		curl \
 		supervisor \
 		wget \
@@ -60,6 +61,11 @@ RUN	apt-get -y update && \
 	apt-get install -yqq mysql-client-5.7&& \
 	apt-get clean && apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install NodeJS and npm
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+	apt-get -y update && \
+	apt-get install nodejs
 
 EXPOSE 80 443
 
