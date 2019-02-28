@@ -8,3 +8,5 @@ sites/*/private
 # Ignore Supervisor log and PID files
 supervisord.log
 supervisord.pid
+cache/
+private/
